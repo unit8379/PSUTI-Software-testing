@@ -10,12 +10,19 @@ namespace BaseCalculator
 {
     public partial class BaseCalc : Form
     {
-        private int mem = 0;
+        public static int mem = 0;
         private DateTime dt = DateTime.Now;
+
+        // для тестирования приватных textBox'ов можно завести статические поля, которые должны изменяться
+        // вместе с текст боксами в ходе работы программы
+        public static String resultTextBox;
+        public static String expressionTextBox;
+
         public BaseCalc()
         {
             InitializeComponent();
         }
+
         #region Управление_Фокусом
         private void bAnswer_Leave(object sender, EventArgs e)
         {
@@ -150,6 +157,7 @@ namespace BaseCalculator
                 }
             }
         }
+
         /// <summary>
         /// Очищаем текст
         /// </summary>
@@ -159,13 +167,14 @@ namespace BaseCalculator
         {
             textBoxExpression.Text = "";
         }
+
         #region Работа_с_памятью
-        private void bMR_Click(object sender, EventArgs e)
+        public void bMR_Click(object sender, EventArgs e)
         {
             textBoxExpression.Text += mem.ToString();
         }
 
-        private void bMPlus_Click(object sender, EventArgs e)
+        public void bMPlus_Click(object sender, EventArgs e)
         {
             if (textBoxResult.Text != "")
             {
@@ -175,16 +184,16 @@ namespace BaseCalculator
                 }
                 catch (OverflowException ex)
                 {
-                    MessageBox.Show("- Слишком малое или слишком большое значение числа для int\nЧисла должны быть в пределах от -2147483648 до 2147483647");
+                    MessageBox.Show("Слишком малое или слишком большое значение числа для int\nЧисла должны быть в пределах от -2147483648 до 2147483647");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не возможно преобразовать к числу!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Невозможно преобразовать к числу!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-        private void bMC_Click(object sender, EventArgs e)
+        
+        public void bMC_Click(object sender, EventArgs e)
         {
             mem = 0;
         }

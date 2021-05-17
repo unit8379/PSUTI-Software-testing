@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseCalculator;
 
@@ -461,7 +454,7 @@ namespace Lab_2_TestDriver
             }
             else
             {
-                // загружаем только что скомпилированную сборку(здесь тонкий момент - если мы прото загрузим сборку из файла - то он будет заблокирован,
+                // загружаем только что скомпилированную сборку(здесь тонкий момент - если мы просто загрузим сборку из файла - то он будет заблокирован,
                 // acces denied, поэтому вначале читаем его в поток, и лишь потом подключаем)
                 System.IO.BinaryReader reader = new System.IO.BinaryReader(new System.IO.FileStream(Application.StartupPath + "\\My.dll", System.IO.FileMode.Open, System.IO.FileAccess.Read));
                 Byte[] asmBytes = new Byte[reader.BaseStream.Length];

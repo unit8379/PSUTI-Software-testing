@@ -69,6 +69,7 @@ namespace BaseCalculator
             }
             return correct;
         }
+
         /// <summary>
         /// Форматирует входное выражение, выставляя между операторами пробелы и удаляя лишние, а также отлавливает неопознанные операторы, следит за концом строки
         /// а также отлавливает ошибки на конце строки
@@ -526,6 +527,7 @@ namespace BaseCalculator
                 return "&Error 05";
             }
         }
+
         /// <summary>
         /// Создает  массив, в котором располагаются операторы и символы представленные в обратной польской записи (безскобочной)
         /// На этом же этапе отлавливаются почти все остальные ошибки (см код). По сути - это компиляция.
@@ -728,6 +730,7 @@ namespace BaseCalculator
             }
             return strarr;
         }
+
         /// <summary>
         /// Вычисление обратной польской записи
         /// </summary>
@@ -863,6 +866,7 @@ namespace BaseCalculator
                 return opz[0].ToString();
             }
         }
+
         /// <summary>
         /// Метод, организующий вычисления. По очереди запускает CheckCorrncy, Format, CreateStack и RunEstimate
         /// </summary>
@@ -875,6 +879,7 @@ namespace BaseCalculator
             if (CheckCurrency())
             {
                 string formstr = Format();
+                // Символ '&' – маркер того, что Format() вернул ошибку
                 if (formstr[0] == '&')
                 {
                     return formstr.Substring(1);
